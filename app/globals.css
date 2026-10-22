@@ -1,0 +1,588 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --paper: #efeee7;
+  --ink: #1d2018;
+  --muted: #77796e;
+  --acid: #d7f45b;
+  --road: #252720;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-section {
+  position: relative;
+  height: 260vh;
+  background: var(--paper);
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 36%, rgba(255, 255, 250, 0.96), transparent 57%),
+    var(--paper);
+}
+
+.background-grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(29, 32, 24, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 32, 24, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.topbar {
+  position: absolute;
+  z-index: 5;
+  top: clamp(20px, 3.4vh, 34px);
+  left: 5.4vw;
+  right: 5.4vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.brand-mark {
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.09em;
+}
+
+.brand-mark > span:first-child {
+  padding: 0 2px;
+  color: #85982f;
+}
+
+.brand-dot {
+  color: #85982f;
+}
+
+.topbar-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #6c6f63;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #92a936;
+  box-shadow: 0 0 0 4px rgba(146, 169, 54, 0.13);
+}
+
+.issue-number {
+  justify-self: end;
+  color: #77796e;
+  white-space: nowrap;
+}
+
+.hero-copy {
+  position: absolute;
+  top: 15.2%;
+  left: 4vw;
+  right: 4vw;
+  z-index: 2;
+  text-align: center;
+}
+
+.eyebrow,
+.closing-kicker {
+  margin: 0 0 17px;
+  color: #77796e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero-headline {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 6.4vw, 5.9rem);
+  font-weight: 900;
+  letter-spacing: 0.105em;
+  line-height: 1.03;
+  white-space: nowrap;
+  perspective: 500px;
+}
+
+.headline-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.hero-subtitle {
+  margin: 19px 0 0;
+  color: #5f6257;
+  font-size: clamp(11px, 1.2vw, 14px);
+  letter-spacing: 0.04em;
+}
+
+.hero-subtitle span {
+  color: #252720;
+  font-weight: 700;
+}
+
+.road-area {
+  position: absolute;
+  top: 43.2%;
+  left: 0;
+  width: 100%;
+  height: clamp(112px, 15vh, 150px);
+}
+
+.road-surface {
+  position: absolute;
+  inset: 7px 0;
+  overflow: hidden;
+  background: var(--road);
+  box-shadow: 0 16px 30px rgba(24, 26, 20, 0.15);
+}
+
+.road-edge {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: #afb2a3;
+}
+
+.road-edge-top {
+  top: 0;
+}
+
+.road-edge-bottom {
+  bottom: 0;
+}
+
+.road-dashes {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(239, 238, 231, 0.55) 0,
+    rgba(239, 238, 231, 0.55) 42px,
+    transparent 42px,
+    transparent 76px
+  );
+}
+
+.road-trail {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 3px);
+  left: 5.5%;
+  width: 89%;
+  height: 6px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  border-radius: 999px;
+  background: var(--acid);
+  box-shadow: 0 0 18px rgba(215, 244, 91, 0.36);
+}
+
+.car-object {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 5.5%;
+  width: clamp(112px, 18vw, 202px);
+  transform: translateY(-50%);
+  filter: drop-shadow(0 8px 5px rgba(0, 0, 0, 0.28));
+  will-change: transform;
+}
+
+.car-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.road-label {
+  position: absolute;
+  top: calc(100% + 14px);
+  color: #77796e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.road-label span {
+  color: #8da231;
+}
+
+.road-label-left {
+  left: 5.5%;
+}
+
+.road-label-right {
+  right: 5.5%;
+}
+
+.metrics-heading {
+  position: absolute;
+  top: 64.8%;
+  left: 5.5%;
+  right: 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #686b60;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+}
+
+.illustrative-note {
+  color: #929486;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.metrics-grid {
+  position: absolute;
+  top: 68%;
+  left: 5.5%;
+  right: 5.5%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metric-card {
+  min-width: 0;
+  min-height: 118px;
+  padding: 15px 16px 14px;
+  border: 1px solid rgba(29, 32, 24, 0.11);
+  border-radius: 13px;
+  background: rgba(255, 255, 250, 0.72);
+  box-shadow: 0 8px 24px rgba(29, 32, 24, 0.025);
+  backdrop-filter: blur(10px);
+}
+
+.metric-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  color: #77796e;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.metric-arrow {
+  color: #7d8f33;
+  font-size: 15px;
+}
+
+.metric-value {
+  display: block;
+  margin-bottom: 5px;
+  font-size: clamp(1.55rem, 3vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 1;
+}
+
+.metric-card p {
+  max-width: 180px;
+  margin: 0;
+  color: #686b60;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.metric-lime .metric-value {
+  color: #7c9226;
+}
+
+.metric-blue .metric-value {
+  color: #507987;
+}
+
+.metric-orange .metric-value {
+  color: #b66d35;
+}
+
+.metric-violet .metric-value {
+  color: #7871a0;
+}
+
+.bottomline {
+  position: absolute;
+  bottom: 3.1%;
+  left: 5.5%;
+  right: 5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #85877b;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.scroll-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(29, 32, 24, 0.2);
+  border-radius: 50%;
+  color: #373a2f;
+  font-size: 13px;
+}
+
+.progress-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(29, 32, 24, 0.09);
+}
+
+.progress-fill {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: #9bb63a;
+}
+
+.closing-section {
+  min-height: 76vh;
+  padding: clamp(80px, 12vw, 160px) 8vw;
+  background: #22241e;
+  color: #f1f0e8;
+}
+
+.closing-kicker {
+  color: #b6c77a;
+}
+
+.closing-section h2 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.5rem, 7.8vw, 7.2rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.98;
+}
+
+.closing-copy {
+  max-width: 520px;
+  margin: 28px 0 0;
+  color: #b8baaf;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 38px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(241, 240, 232, 0.45);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.back-link span {
+  color: var(--acid);
+  font-size: 15px;
+}
+
+@media (max-width: 760px) {
+  .hero-section {
+    height: 245vh;
+  }
+
+  .hero-stage {
+    min-height: 680px;
+  }
+
+  .topbar {
+    left: 5%;
+    right: 5%;
+    grid-template-columns: auto 1fr;
+  }
+
+  .topbar-note {
+    justify-self: end;
+    font-size: 8px;
+  }
+
+  .issue-number {
+    display: none;
+  }
+
+  .hero-copy {
+    top: 15.5%;
+    left: 3%;
+    right: 3%;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.55rem, 7vw, 3.6rem);
+    letter-spacing: 0.07em;
+  }
+
+  .eyebrow {
+    margin-bottom: 13px;
+    font-size: 8px;
+  }
+
+  .hero-subtitle {
+    margin-top: 13px;
+    font-size: 10px;
+  }
+
+  .road-area {
+    top: 39%;
+    height: 112px;
+  }
+
+  .car-object {
+    width: clamp(108px, 27vw, 166px);
+  }
+
+  .metrics-heading {
+    top: 57.4%;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 8px;
+  }
+
+  .illustrative-note {
+    text-align: right;
+    font-size: 7px;
+  }
+
+  .metrics-grid {
+    top: 61%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .metric-card {
+    min-height: 104px;
+    padding: 11px 12px;
+    border-radius: 10px;
+  }
+
+  .metric-card-top {
+    margin-bottom: 7px;
+  }
+
+  .metric-value {
+    font-size: clamp(1.7rem, 7vw, 2.5rem);
+  }
+
+  .metric-card p {
+    font-size: 10px;
+  }
+
+  .bottomline {
+    bottom: 2.5%;
+    font-size: 7px;
+    letter-spacing: 0.06em;
+  }
+
+  .scroll-glyph {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-headline {
+    font-size: 1.42rem;
+    letter-spacing: 0.055em;
+  }
+
+  .road-label {
+    font-size: 7px;
+  }
+
+  .metrics-heading {
+    letter-spacing: 0.09em;
+  }
+
+  .metric-card p {
+    font-size: 9px;
+  }
+
+  .bottomline > span:first-child {
+    max-width: 115px;
+    line-height: 1.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
